@@ -1,8 +1,9 @@
 .feed{
-    flex: 0.6;
+    /* flex: 0.6; */
     border-right: 1px solid var(--twitter-background);
     min-width: fit-content;
     overflow-y: scroll;
+    height: 600px;
 }
 .feed::-webkit-scrollbar{
     display: none;
@@ -17,6 +18,8 @@
     background-color: white;
     z-index: 100;
     border: 1px solid var(--twitter-background);
+    border-left: none;
+    border-right: none;
     padding: 15px 20px;
 }
 .feed__header > h2 {

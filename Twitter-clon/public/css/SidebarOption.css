@@ -1,22 +1,30 @@
-.sidebarOption{
+.SidebarOption{
     display: flex;
-    align-items: center;
+    text-align: center;
+    align-items: baseline;
     cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
 }
-.sidebarOption:hover {
+.SidebarOptionName{
+/* color: var(--twitter-color); */
+    margin-left: 10px;
+}
+
+.SidebarOption:hover {
     background-color: #e8f5fe;
     border-radius: 30px;
     color: var(--twitter-color);
     transition: color 100ms ease-out;
 }
-.sidebarOption > .MuiSvgIcon-root{
+.SidebarOption > .MuiSvgIcon-root{
     padding: 15px;
 }
-.sidebarOption > h2 {
+.SidebarOption > h2 {
     font-weight: 800;
     font-size: 20px;
     margin-right: 20px;
 }
-.sidebarOption--active{
+.SidebarOption--active{
     color: var(--twitter-color);
 }
