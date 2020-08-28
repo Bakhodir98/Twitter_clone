@@ -9,13 +9,13 @@
 
     <!-- Fonts -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="css/App.css">
-    <link rel="stylesheet" href="css/Sidebar.css">
-    <link rel="stylesheet" href="css/SidebarOption.css">
-    <link rel="stylesheet" href="css/Feed.css">
-    <link rel="stylesheet" href="css/TweetBox.css">
-    <link rel="stylesheet" href="css/Post.css">
-    <link rel="stylesheet" href="css/Widgets.css">
+    <link rel="stylesheet" href="{{ asset('css/App.css')}} " type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/Sidebar.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/SidebarOption.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/Feed.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/TweetBox.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/Post.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/Widgets.css') }}" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +24,19 @@
 </head>
 
 <body>
-    @yield('content')
+    <div class="container">
+        <div class="row" style="padding-top: 10px">
+            <div class="col-sm-3">
+                @include('sidebar')
+            </div>
+            <div class="col-sm-6">
+                @yield('content')
+            </div>
+            <div class="col-sm-3">
+                <div cdlass="Widgets"></div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

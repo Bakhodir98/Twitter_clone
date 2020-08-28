@@ -9,6 +9,7 @@
 .SidebarOptionName{
 /* color: var(--twitter-color); */
     margin-left: 10px;
+    display: inline;
 }
 
 .SidebarOption:hover {

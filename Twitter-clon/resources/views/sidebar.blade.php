@@ -3,8 +3,8 @@
         <span class="fa fa-twitter"></span>
     </div>
     <div class="SidebarOption--active SidebarOption">
-        <a href="{{route('index')}}"><span class="glyphicon glyphicon-home"></span>
-            <p class=" SidebarOptionName">Главная</p>
+        <a href="{{route('index')}}"><span class="glyphicon glyphicon-home" style="display: inline"></span>
+            <p class="SidebarOptionName">Главная</p>
         </a>
     </div>
     <div class="SidebarOption">

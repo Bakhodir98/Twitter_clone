@@ -1,6 +1,6 @@
 <div class="post">
     <div class="post__avatar">
-        <img src="https://i.ytimg.com/vi/AHbpLXJL6EQ/hqdefault.jpg" class="image__rounded">
+        <img src="{{Storage::url($user->image)}}" class="image__rounded">
     </div>
     <div class="post__body">
         <div class="post__header">

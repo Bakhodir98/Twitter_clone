@@ -1,26 +1,80 @@
-@extends('profile')
-@section('title', 'Редактировать профиль '.$user->firstname)
+@extends('layouts.master')
 @section('content')
-<div class="col-md-12">
-    <h1>Редактировать профиль <b>{{$user->firstname}}</b></h1>
-
-    <form method="POST" enctype="multipart/form-data" action="{{route('profile.update', $user)}}">
-        <div>
-            @method('PUT')
-            @csrf
-            <div class="input-group row">
-                <label for="firstname" class="col-sm-2 col-form-label">Имя: </label>
-                <div class="col-sm-6">
-                    {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
-                    @error('firstname')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-                    <input type="text" class="form-control" name="firstname" id="firstname"
-                        value="{{$user->firstname}}">
-                </div>
+<h1><b>{{$user->firstname}}</b></h1>
+<img src="{{Storage::url($user->image)}}" alt="Avatar" class="image__rounded">
+<form method="POST" enctype="multipart/form-data" action="{{route('profile.update', $user)}}">
+    <div>
+        @method('PUT')
+        @csrf
+        <div class="row">
+            <label for="firstname" class="col-sm-6">Имя: </label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
+                @error('firstname')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+                <input type="text" class="form-control" name="firstname" id="firstname" value="{{$user->firstname}}">
             </div>
-            <button class="btn btn-success">Сохранить</button>
         </div>
-    </form>
-</div>
+        <div class="row">
+            <label for="lastname" class="col-sm-6">Фамилия: </label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
+                @error('lastname')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+                <input type="text" class="form-control" name="lastname" id="lastname" value="{{$user->lastname}}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="username" class="col-sm-6">Имя пользователя: </label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
+                @error('username')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+                <input type="text" class="form-control" name="username" id="username" value="{{$user->username}}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="date_of_birth" class="col-sm-6">День рождения</label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
+                @error('date_of_birth')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+                <input type="text" class="form-control" name="date_of_birth" id="date_of_birth"
+                    value="{{$user->date_of_birth}}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="password" class="col-sm-6">Пароль</label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
+                @error('date_of_birth')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+                <input type="text" class="form-control" name="password" id="password" placeholder="Введите новый пароль"
+                    value="{{$user->password}}">
+            </div>
+        </div>
+        <div class="row">
+
+            <label for="image" class="col-sm-6">Аватар: </label>
+            <div class="col-sm-6">
+                {{-- @include('auth.layouts.error', ['fieldName' => 'image']) --}}
+                @error('image')
+                <div class="alert alert-danger">{{$message}}
+                </div>
+                @enderror
+                <label class="btn btn-default btn-file">
+                    Загрузить
+                    <input type="file" style="display:none" name="image" id="image">
+                </label>
+            </div>
+        </div>
+        <button class="btn btn-info">Сохранить</button>
+    </div>
+</form>
+
 @endsection

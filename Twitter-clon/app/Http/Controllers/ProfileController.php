@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+// use App\Http\Controllers\Controller;
+
 
 class ProfileController extends Controller
 {
@@ -15,8 +18,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        // return view('auth.orders.order', compact('orders'));
+        $user_id = Auth::user()->id;
+        $user = User::where('id', $user_id)->first();
+        // dd($user);
         return view('profile', compact('user'));
     }
 
@@ -38,7 +42,6 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -49,7 +52,6 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        //
     }
 
     /**
@@ -60,7 +62,9 @@ class ProfileController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user_id = Auth::user()->id;
+        $user = User::where('id', $user_id)->first();
+        return view('form', compact('user'));
     }
 
     /**
@@ -72,7 +76,14 @@ class ProfileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user_id = Auth::user()->id;
+        $user = User::where('id', $user_id)->first();
+        Storage::delete($user->image);
+        $path = $request->file('image')->store('users');
+        $params = $request->all();
+        $params['image'] = $path;
+        $user->update($params);
+        return redirect()->route('index');
     }
 
     /**
@@ -83,6 +94,9 @@ class ProfileController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // $user_id = Auth::user()->id;
+        // $user = User::where('id', $user_id)->first();
+        $user->delete();
+        return redirect()->route('profile.index');
     }
 }
