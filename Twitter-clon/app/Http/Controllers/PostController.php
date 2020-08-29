@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class PostController extends Controller
 {
@@ -14,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // $user_id = Auth::user()->id;
+        // $user = User::where('id', $user_id)->first();
+        // return view('index', compact('user'));
     }
 
     /**
@@ -35,7 +39,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // $user_id = Auth::user()->id;
+        // $user = User::where('id', $user_id)->first();
+        $path = $request->file('image')->store('posts');
+        $params = $request->all();
+        $params['image'] = $path;
+        Post::create($params);
+        return redirect()->route('index');
     }
 
     /**

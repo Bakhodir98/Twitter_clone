@@ -17,3 +17,16 @@
     height: 50px !important;
     margin-top: 20px !important;
 }
+.sidebar_tweetButton{
+    background-color: var(--twitter-color) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    width: 100%;
+    height: 40px !important;
+    margin-top: 20px !important;
+    margin-left: auto !important;
+    margin-right: 10px;
+}

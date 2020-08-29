@@ -1,20 +1,20 @@
 .SidebarOption{
-    display: flex;
-    /* text-align: center; */
+    display: block;
     align-items: baseline;
-    cursor: pointer;
     font-size: 20px;
-    /* padding: 10px; */
-    /* float: left; */
-    width: 100%;
+    padding-left: 0px !important;
 }
-.SidebarOptionName{
-    color: black;
-    margin-left: 10px;
+.SidebarOption > li{
+    list-style-type: none;
+    /* display: block; */
+    padding: 10px;
+}
+.SidebarOptionLink{
     padding: 10px;
     text-decoration: none !important;
+    color: black;
 }
-.SidebarOptionName:hover{
+.SidebarOptionLink:hover{
     background-color: #e8f5fe;
     border-radius: 30px;
     color: var(--twitter-color) !important;
@@ -30,5 +30,5 @@
     margin-right: 20px;
 }
 .SidebarOption--active{
-    color: var(--twitter-color);
+    color: var(--twitter-color) !important;
 }

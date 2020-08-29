@@ -2,7 +2,7 @@
     <div class="widgets__input">
         {{-- <SearchIcon className="widgets__searchIcon" /> --}}
         <span class="glyphicon glyphicon-search"></span>
-        <input placeholder="Search Twitter" type="text">
+        <input placeholder="Искать в Twitter" type="text">
     </div>
     <div class="widgets__widgetContainer">
         <h2>Актуальные темы для вас</h2>

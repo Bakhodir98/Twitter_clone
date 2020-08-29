@@ -1,8 +1,6 @@
 .profile__menu{
-   align-items: flex-start;
+   align-items: flex;
    border-bottom:1px solid var(--twitter-background);
-   padding-bottom: 10px;
-   padding-top: 10px;
    text-align: center;
    font-size: 15px;
    font-weight: 800;
