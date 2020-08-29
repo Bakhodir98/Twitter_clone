@@ -3,37 +3,50 @@
         <span class="fa fa-twitter"></span>
     </div>
     <div class="SidebarOption--active SidebarOption">
-        <a href="{{route('index')}}"><span class="glyphicon glyphicon-home" style="display: inline"></span>
-            <p class="SidebarOptionName">Главная</p>
+        <a href="{{route('index')}}" class="SidebarOptionName"><span class="glyphicon glyphicon-home "
+                style="display: inline"></span>
+            Главная
         </a>
     </div>
     <div class="SidebarOption">
-        <span class="glyphicon glyphicon-search"></span>
-        <p class="SidebarOptionName">Поиск</p>
-    </div>
-    <div class="SidebarOption">
-        <span class="glyphicon glyphicon-bell"></span>
-        <p class="SidebarOptionName">Уведомления</p>
-    </div>
-    <div class="SidebarOption">
-        <span class="glyphicon glyphicon glyphicon-envelope"></span>
-        <p class="SidebarOptionName">Сообщения</p>
-    </div>
-    <div class="SidebarOption">
-        <span class="glyphicon glyphicon-bookmark"></span>
-        <p class="SidebarOptionName">Закладки</p>
-    </div>
-    <div class="SidebarOption">
-        <span class="glyphicon glyphicon-list-alt"></span>
-        <p class="SidebarOptionName">Списки</p>
-    </div>
-    <div class="SidebarOption">
-        <a href="{{route('profile.index')}}"><span class="glyphicon glyphicon-user"></span>
-            <p class="SidebarOptionName">Профиль</p>
+        <a href="" class="SidebarOptionName">
+            <span class="glyphicon glyphicon-search"></span>
+            Поиск
         </a>
     </div>
     <div class="SidebarOption">
-        <span class=" glyphicon glyphicon-option-horizontal"></span>
-        <p class="SidebarOptionName">Еще</p>
+        <a href="" class="SidebarOptionName">
+            <span class="glyphicon glyphicon-bell"></span>
+            Уведомления
+        </a>
+    </div>
+    <div class="SidebarOption">
+        <a href="" class="SidebarOptionName">
+            <span class="glyphicon glyphicon glyphicon-envelope"></span>
+            Сообщения
+        </a>
+    </div>
+    <div class="SidebarOption">
+        <a href="" class="SidebarOptionName">
+            <span class="glyphicon glyphicon-bookmark"></span>
+            Закладки
+        </a>
+    </div>
+    <div class="SidebarOption">
+        <a href="" class="SidebarOptionName">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            Списки
+        </a>
+    </div>
+    <div class="SidebarOption">
+        <a href="{{route('profile.index')}}" class="SidebarOptionName"><span class="glyphicon glyphicon-user"></span>
+            Профиль
+        </a>
+    </div>
+    <div class="SidebarOption">
+        <a href="" class="SidebarOptionName">
+            <span class=" glyphicon glyphicon-option-horizontal"></span>
+            Еще
+        </a>
     </div>
 </div>

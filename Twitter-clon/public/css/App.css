@@ -48,9 +48,12 @@ body{
 .app{
   display: flex;
   height: 100vh;
-  max-width: 1100px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px;
  
+}
+.bootstrap__no__padding{
+  padding: 0 !important;
 }

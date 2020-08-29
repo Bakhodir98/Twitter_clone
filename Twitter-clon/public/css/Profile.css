@@ -1,0 +1,26 @@
+.profile__menu{
+   align-items: flex-start;
+   border-bottom:1px solid var(--twitter-background);
+   padding-bottom: 10px;
+   padding-top: 10px;
+   text-align: center;
+   font-size: 15px;
+   font-weight: 800;
+   color: darkgray;
+}
+.profile__menu:hover{
+    background-color: #e8f5fe;
+    /* border-radius: 30px; */
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+    cursor: pointer;
+}
+.profile__menu--active{
+    border-bottom:2px solid var(--twitter-color);
+    color: var(--twitter-color) !important;
+}
+.image__rounded__profile{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
