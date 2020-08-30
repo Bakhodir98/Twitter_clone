@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -18,7 +20,7 @@ class PostController extends Controller
     {
         // $user_id = Auth::user()->id;
         // $user = User::where('id', $user_id)->first();
-        // return view('index', compact('user'));
+        // return view('index', compact('user', ));
     }
 
     /**
@@ -57,7 +59,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $comments = Comment::where('post_id', $post->id)->get();
+        $user = Auth::user();
+        return view('posts.show', compact('post', 'comments', 'user'));
     }
 
     /**
@@ -68,9 +72,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $user_id = Auth::user()->id;
+        $user = User::where('id', $user_id)->first();
+        return view('posts.form', compact('post', 'user'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -80,7 +85,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        // dd($request);
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($post->image);
+            $path = $request->file('image')->store('posts');
+            $params['image'] = $path;
+        }
+        $post->update($params);
+        return redirect()->route('index');
     }
 
     /**
@@ -91,6 +105,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return back();
     }
 }

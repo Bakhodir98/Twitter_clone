@@ -28,4 +28,5 @@ Route::get('/', 'MainController@index')->name('index')->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::resource('/profile', 'ProfileController');
     Route::resource('/post', 'PostController');
+    Route::resource('/comment', 'CommentController');
 });

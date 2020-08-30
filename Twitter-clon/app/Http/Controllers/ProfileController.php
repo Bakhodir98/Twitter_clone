@@ -78,10 +78,14 @@ class ProfileController extends Controller
     {
         $user_id = Auth::user()->id;
         $user = User::where('id', $user_id)->first();
-        Storage::delete($user->image);
-        $path = $request->file('image')->store('users');
+
         $params = $request->all();
-        $params['image'] = $path;
+        unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($user->image);
+            $path = $request->file('image')->store('categories');
+            $params['image'] = $path;
+        }
         $user->update($params);
         return redirect()->route('index');
     }

@@ -23,7 +23,7 @@
         </form>
     </div>
     @foreach ($posts as $post)
-    @include('post')
+    @include('post', compact('post'))
     @endforeach
 </div>
 @endsection
