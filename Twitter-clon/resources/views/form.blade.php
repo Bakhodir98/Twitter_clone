@@ -2,7 +2,7 @@
 @section('content')
 <h1><b>{{$user->firstname}}</b></h1>
 <img src="{{Storage::url($user->image)}}" alt="Avatar" class="image__rounded">
-<form method="POST" enctype="multipart/form-data" action="{{route('profile.update', $user)}}">
+<form method="POST" enctype="multipart/form-data" action="{{route('user.update', $user)}}">
     <div>
         @method('PUT')
         @csrf

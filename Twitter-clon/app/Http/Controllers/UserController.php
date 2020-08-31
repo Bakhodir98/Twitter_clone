@@ -6,10 +6,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-// use App\Http\Controllers\Controller;
 
-
-class ProfileController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
-        // dd($user);
+        $user = Auth::user();
         return view('profile', compact('user'));
     }
 
@@ -42,6 +38,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -52,6 +49,7 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
+        //
     }
 
     /**
@@ -62,8 +60,6 @@ class ProfileController extends Controller
      */
     public function edit(User $user)
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
         return view('form', compact('user'));
     }
 
@@ -76,8 +72,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
+        // $user_id = Auth::user()->id;
+        // $user = User::where('id', $user_id)->first();
 
         $params = $request->all();
         unset($params['image']);
@@ -98,9 +94,7 @@ class ProfileController extends Controller
      */
     public function destroy(User $user)
     {
-        // $user_id = Auth::user()->id;
-        // $user = User::where('id', $user_id)->first();
         $user->delete();
-        return redirect()->route('profile.index');
+        return redirect()->route('login');
     }
 }

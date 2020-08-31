@@ -11,9 +11,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
-        $posts = Post::where('user_id', $user_id)->get();
+        $posts = Post::orderBy('id', 'DESC')->get();
+        $user = Auth::user();
         return view('index', compact('user', 'posts'));
     }
 }

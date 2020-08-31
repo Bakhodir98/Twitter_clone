@@ -26,7 +26,8 @@ Route::get('/', 'MainController@index')->name('index')->middleware('auth');
 // Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/profile', 'ProfileController');
     Route::resource('/post', 'PostController');
     Route::resource('/comment', 'CommentController');
+    Route::resource('/user', 'UserController');
 });
+// Route::resource('/profile', 'ProfileController');

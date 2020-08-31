@@ -41,12 +41,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $user_id = Auth::user()->id;
-        // $user = User::where('id', $user_id)->first();
-        $path = $request->file('image')->store('posts');
         $params = $request->all();
-        $params['image'] = $path;
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('posts');
+            $params['image'] = $path;
+        }
         Post::create($params);
         return redirect()->route('index');
     }

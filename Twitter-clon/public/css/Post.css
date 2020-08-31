@@ -3,9 +3,15 @@
    align-items: flex-start;
    border-bottom:1px solid var(--twitter-background);
    /* padding-bottom: 10px; */
-   
+   height: auto;
+   width: 100%;
+   overflow-y: scroll;
+   -ms-overflow-style:none;
+    scrollbar-width: none;
 }
-
+.post::-webkit-scrollbar{
+    display: none;
+}
 .post__header{
    /* display: flex; */
 }
@@ -14,29 +20,28 @@
    padding-left: 85px;
 }
 .post__option{
-    /* display: flex; */
-    /* text-align: center; */
     align-items: center;
     cursor: pointer;
     font-size: 20px;
-    padding: 10px;
     color: var(--twitter-color);
+    padding:5px;
 }
 .post__option:hover {
-    background-color: #e8f5fe;
-    border-radius: 30px;
+    background-color:var(--twitter-background);
+    /* background-color: var(--twitter-color); */
     color: var(--twitter-color);
+    border-radius: 13px;
     transition: color 100ms ease-out;
 }
 /* .post__ */
 .post__body{
-    height: 350px;
     padding-left: 10px;
     padding-right: 10px;
     /* overflow: auto; */
 }
 .post__body:hover{
-    background-color: var(--twitter-background);
+    background-color:#F5F8FA;
+    cursor: pointer;
 }
 .post__body > img{
     border-radius: 20px;
@@ -45,19 +50,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-top: 10px; */
     padding:10px;
 }
 .post__badge{
     font-size: 14px !important;
     color: var(--twitter-color);
 }
-.post__headerSpecial{
+/* .post__headerSpecial{
     font-weight: 600;
     font-size: 12px;
     margin-right: 5px;
     color: gray;
-}
+} */
 .post__headerText > h3{
     font-size: 15px;
     margin-bottom: 5px;
@@ -65,11 +69,12 @@
 .post__bodyDesription{
     /* margin-bottom: 10px; */
     font-size: 15px;
+    
 }
 .post__headerText{
-    display: flex;
-    align-items: center;
-    width: 100%;
+    /* display: flex; */
+    /* align-items: center; */
+    /* width: 100%; */
     /* justify-content: space-between; */
     
 }
@@ -145,12 +150,30 @@
     display: block;
   }
   
-  /* .Dropdown-content a:hover {background-color: #f1f1f1} */
-  
   .Dropdown:hover .Dropdown-content {
     display: block;
   }
-  
-  /* .Dropdown:hover .Dropbtn {
-    background-color: #3e8e41;
-  } */
+  .user__comment{
+      padding: 5px;
+  }
+  .user__comment:hover{
+      background-color: var(--twitter-background);
+  }
+  .post__text{
+      font-size: 15px;
+      width: 100%;
+      word-wrap: break-word !important;
+  }
+  .post__comments{
+    height: 600px;   
+    width: 100%;
+    overflow-y: scroll;
+    -ms-overflow-style:none;
+     scrollbar-width: none;
+  }
+  .post__comments::-webkit-scrollbar{
+      display: none;
+  }
+  .post__firstname{
+      font-weight: 800;
+  }

@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('profile.index')}}" class="SidebarOptionLink"><span
+                    <a href="{{route('user.index')}}" class="SidebarOptionLink"><span
                             class="glyphicon glyphicon-user"></span>
                         Профиль
                     </a>

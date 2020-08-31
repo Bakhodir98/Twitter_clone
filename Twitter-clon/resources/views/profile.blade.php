@@ -14,12 +14,11 @@
             <p>3 В читаемых</p>
             <p>0 Читатели</p>
         </div>
-        <form action="{{route('profile.destroy', $user)}}" method="POST">
-            <a href="{{route('profile.edit', $user)}}" class="btn btn-info" type="button">Настроит
-                профиль</a>
+        <form action="{{route('user.destroy',$user->id )}}" method="POST">
+            <a href="{{route('user.edit', $user)}}" class="btn btn-warning" type="button">Редактировать</a>
             @csrf
             @method('DELETE')
-            <input class="btn btn-danger" type="submit" value="Удалить профиль">
+            <input class="btn btn-danger" type="submit" value="Удалить">
         </form>
 
     </div>
