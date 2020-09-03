@@ -29,5 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/post', 'PostController');
     Route::resource('/comment', 'CommentController');
     Route::resource('/user', 'UserController');
+    Route::get('/live_search', 'LiveSearch@index')->name('live_search.index');
+    Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
 });
 // Route::resource('/profile', 'ProfileController');

@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="{{ asset('css/Post.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/Widgets.css') }}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/Profile.css')}}" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> --}}
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
 
 </head>
 
@@ -40,3 +41,29 @@
 </body>
 
 </html>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        fetch_customer_data();
+        function fetch_customer_data(query ='')
+        {
+            if(query != '')
+            $.ajax({
+                url:"{{ route('live_search.action')}}",
+                method: 'GET',
+                data:{'query':query},
+                dataType: 'json',
+                success:function(data)
+                {
+                    $('#users_data').html(data.table_data);
+                    $('#total_records').text(data.total_data);
+                }
+            })
+        }
+        $(document).on('keyup', '#search', function(){
+            var query = $(this).val();
+            fetch_customer_data(query);
+        });
+    })
+</script>

@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="SidebarOptionLink">
+                    <a href="{{route('live_search.index')}}" class="SidebarOptionLink">
                         <span class="glyphicon glyphicon-search"></span>
                         Поиск
                     </a>

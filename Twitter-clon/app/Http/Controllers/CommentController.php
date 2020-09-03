@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
@@ -31,11 +33,10 @@ class CommentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function store(Request $request)
     {
-        // dd($request);
         $params = $request->all();
         Comment::create($params);
         return back();
@@ -49,7 +50,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        // dd($comment->post());
     }
 
     /**

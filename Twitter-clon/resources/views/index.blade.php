@@ -1,9 +1,10 @@
 @extends('layouts.master')
 @section('content')
-<div class="feed__header">
-    <h2>Главная</h2>
-</div>
+
 <div class="feed">
+    <div class="feed__header">
+        <h2>Главная</h2>
+    </div>
     <div class="tweetBox">
         <form method="POST" enctype="multipart/form-data" action="{{route('post.store')}}">
             @csrf
@@ -24,6 +25,7 @@
             <button class="tweetBox_tweetButton">Твитнуть</button>
         </form>
     </div>
+    {{-- @dd($posts) --}}
     @foreach ($posts as $post)
     @include('post', compact('post'))
     @endforeach

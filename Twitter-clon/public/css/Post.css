@@ -41,7 +41,6 @@
 }
 .post__body:hover{
     background-color:#F5F8FA;
-    cursor: pointer;
 }
 .post__body > img{
     border-radius: 20px;
@@ -155,6 +154,7 @@
   }
   .user__comment{
       padding: 5px;
+      cursor: pointer;
   }
   .user__comment:hover{
       background-color: var(--twitter-background);

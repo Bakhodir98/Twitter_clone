@@ -18,9 +18,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $user_id = Auth::user()->id;
-        // $user = User::where('id', $user_id)->first();
-        // return view('index', compact('user', ));
     }
 
     /**
@@ -58,9 +55,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = Comment::where('post_id', $post->id)->get();
-        $user = Auth::user();
-        return view('posts.show', compact('post', 'comments', 'user'));
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -71,9 +66,12 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id)->first();
-        return view('posts.form', compact('post', 'user'));
+        $user = $post->user;
+        if (Auth::user() == $user) {
+            return view('posts.form', compact('post', 'user'));
+        } else {
+            return back();
+        }
     }
     /**
      * Update the specified resource in storage.
@@ -84,7 +82,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        // dd($request);
         $params = $request->all();
         unset($params['image']);
         if ($request->has('image')) {

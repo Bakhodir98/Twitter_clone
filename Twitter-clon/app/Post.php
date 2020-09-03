@@ -17,4 +17,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+    public function getTotalComments()
+    {
+        return $this->hasMany('App\Comment')->where('id', $this->id)->count();
+    }
 }

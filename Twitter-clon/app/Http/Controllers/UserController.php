@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('profile', compact('user'));
+        $posts = Post::where('user_id', $user->id)->get();
+        return view('profile', compact('user', 'posts'));
     }
 
     /**
@@ -49,7 +51,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $posts = Post::where('user_id', $user->id)->get();
+        return view('profile', compact('user', 'posts'));
     }
 
     /**
@@ -60,7 +63,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('form', compact('user'));
+        if ($user->id == Auth::user()->id)
+            return view('user.form', compact('user'));
+        else
+            return back();
     }
 
     /**
@@ -94,7 +100,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->route('login');
+        if ($user->id == Auth::user()->id) {
+            $user->delete();
+            return redirect()->route('login');
+        } else
+            return back();
     }
 }

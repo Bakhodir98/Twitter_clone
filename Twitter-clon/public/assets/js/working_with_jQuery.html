@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="D:\BAXA\WEB\Projectdoc.loc\js\jquery.min.js"></script>
+    <!-- <style>
+        #test {
+            position: absolute;
+        }
+
+        div {
+            position: relative;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style> -->
+</head>
+
+<body>
+
+
+    <button onclick="divi()">Click</button>
+    <div id="div" style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>
+
+    <script>
+        // $(document).ready(function () {
+        //     $("tr:odd").hide();
+        // });
+        // $('p').click(function () {
+        //     $(this).hide("fast");
+        // });
+        // $(document).ready(function () {
+        //     console.log($('#test').text());
+        // }
+        // );
+        // $(document).ready(function () {
+        //     $("button").click(function () {
+        //         $("div").animate({
+        //             left: '250px',
+        //             height: '+=150px',
+        //             width: '+=150px'
+        //         });
+        //     });
+        // });
+        function divi() {
+
+            var res = document.getElementById('div').style.width;
+            alert(res);
+            // div[0].width += ;
+            // div[0].height += 100;
+        }
+    </script>
+    <table>
+        <tr>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+        </tr>
+
+        <tr>
+            <td>Two</td>
+            <td>Two</td>
+            <td>Two</td>
+            <td>Two</td>
+        </tr>
+        <tr>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+        </tr>
+        <tr>
+            <td>Two</td>
+            <td>Two</td>
+            <td>Two</td>
+            <td>Two</td>
+        </tr>
+        <tr>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+            <td>One</td>
+        </tr>
+    </table>
+    <p id="test">This is text</p>
+
+</body>
+
+</html>
