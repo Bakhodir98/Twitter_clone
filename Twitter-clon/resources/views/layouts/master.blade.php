@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/Post.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/Widgets.css') }}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/Profile.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/Comment.css')}}" type="text/css">
+
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
     {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
@@ -65,5 +67,19 @@
             var query = $(this).val();
             fetch_customer_data(query);
         });
-    })
+        // $(document).on('click', 'x_button', function(event) {
+        //     // event.preventDefault();
+        //     $('#x_button').hide();
+        //     $("post_image").hide();
+        // })
+    });
+    
+</script>
+<script>
+    function delete_image()
+    {
+        document.getElementById('x_button').style.display="none";
+        document.getElementById('post_image').style.display="none";
+        document.getElementById('delete_image_check').value = "unvisible"
+    }
 </script>

@@ -4,7 +4,7 @@
     <div class="profile">
         <div class="jumbotron">
             <h2>{{$user->firstname}}</h2>
-            <p>2 tweets</p>
+            <p>{{$posts->count()}} tweets</p>
             <img src="{{Storage::url($user->image)}}" alt="Avatar" class="image__rounded__profile">
         </div>
         <div class="info row">
@@ -22,8 +22,15 @@
                         </tr>
                         <tr>
                             <td>Имя пользователья</td>
-                            <td>{{$user->username}}</td>
+                            <td><a href="{{route('user.index')}}"><span
+                                        class="post__badge">{{$user->username}}</span></a>
+                            </td>
                         </tr>
+                        @if(Auth::user() != $user)
+                        <tr>
+                            <td><button class="btn btn-danger">Подписаться</button></td>
+                        </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

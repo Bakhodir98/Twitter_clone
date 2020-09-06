@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CommentRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
@@ -35,7 +38,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response 
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
         $params = $request->all();
         Comment::create($params);
@@ -61,7 +64,12 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        $user = $comment->user;
+        if (Auth::user() == $user) {
+            return view('comment.form', compact('comment', 'user'));
+        } else {
+            return back();
+        }
     }
 
     /**
@@ -73,7 +81,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($comment->image);
+            $path = $request->file('image')->store('posts');
+            $params['image'] = $path;
+        }
+        $comment->update($params);
+        return redirect()->route('post.show', $comment->user);
     }
 
     /**
@@ -84,6 +100,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return back();
     }
 }

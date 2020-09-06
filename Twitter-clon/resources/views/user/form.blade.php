@@ -2,6 +2,7 @@
 @section('content')
 <h1><b>{{$user->firstname}}</b></h1>
 <img src="{{Storage::url($user->image)}}" alt="Avatar" class="image__rounded">
+
 <form method="POST" enctype="multipart/form-data" action="{{route('user.update', $user)}}">
     <div>
         @method('PUT')
@@ -37,43 +38,36 @@
             </div>
         </div>
         <div class="row">
-            <label for="date_of_birth" class="col-sm-6">День рождения</label>
+            <label for="date_of_birth" class="col-sm-6">Дата рождения: </label>
             <div class="col-sm-6">
                 {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
                 @error('date_of_birth')
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
-                <input type="text" class="form-control" name="date_of_birth" id="date_of_birth"
+                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth"
                     value="{{$user->date_of_birth}}">
             </div>
         </div>
         <div class="row">
-            <label for="password" class="col-sm-6">Пароль</label>
+            <label for="image" class="col-sm-6">Пароль: </label>
             <div class="col-sm-6">
-                {{-- @include('auth.layouts.error', ['fieldName' => 'code']) --}}
-                @error('date_of_birth')
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
-                <input type="text" class="form-control" name="password" id="password" placeholder="Введите новый пароль"
-                    value="{{$user->password}}">
+                {{-- @dd($user); --}}
+                <a type="button" class="btn btn-info" href="{{route('PasswordChangeForm',$user)}}">Изменить</a>
             </div>
         </div>
         <div class="row">
-
             <label for="image" class="col-sm-6">Аватар: </label>
             <div class="col-sm-6">
+                <img src="{{Storage::url($user->image)}}" alt="" width="200px" height="200px">
                 {{-- @include('auth.layouts.error', ['fieldName' => 'image']) --}}
                 @error('image')
                 <div class="alert alert-danger">{{$message}}
                 </div>
                 @enderror
-                <label class="btn btn-default btn-file">
-                    Загрузить
-                    <input type="file" style="display:none" name="image" id="image">
-                </label>
+                <input type="file" name="image" id="image">
             </div>
         </div>
-        <button class="btn btn-info">Сохранить</button>
+        <button class="btn btn-info" type="submit">Сохранить</button>
     </div>
 </form>
 

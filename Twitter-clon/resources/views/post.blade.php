@@ -35,6 +35,6 @@
             <img src=" {{Storage::url($post->image)}}" alt="GIF" class="post__image">
             @endif
         </div>
-        @include('posts.post__footer', compact('post'))
+        @include('post.post__footer', compact('post'))
     </div>
 </div>

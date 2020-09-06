@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use App\Comment;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +37,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $params = $request->all();
         if ($request->has('image')) {
@@ -55,7 +56,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -68,7 +69,7 @@ class PostController extends Controller
     {
         $user = $post->user;
         if (Auth::user() == $user) {
-            return view('posts.form', compact('post', 'user'));
+            return view('post.form', compact('post', 'user'));
         } else {
             return back();
         }
@@ -88,7 +89,11 @@ class PostController extends Controller
             Storage::delete($post->image);
             $path = $request->file('image')->store('posts');
             $params['image'] = $path;
+        } else if ($request['delete_image_check'] == "unvisible") {
+            Storage::delete($post->image);
+            $params['image'] = null;
         }
+
         $post->update($params);
         return redirect()->route('index');
     }
@@ -101,7 +106,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return back();
+        if (request()->ajax()) {
+        } else {
+            $post->delete();
+            return back();
+        }
     }
 }

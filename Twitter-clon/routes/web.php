@@ -21,6 +21,8 @@ Auth::routes(
         'verify' => false,
     ]
 );
+Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'MainController@index')->name('index')->middleware('auth');
 // Route::get('/profile', 'ProfileController@index')->name('profile')->middleware('auth');
@@ -28,6 +30,8 @@ Route::get('/', 'MainController@index')->name('index')->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::resource('/post', 'PostController');
     Route::resource('/comment', 'CommentController');
+    Route::get('/user/passwordChangeForm/{id}', 'UserController@PasswordChangeForm')->name('PasswordChangeForm');
+    Route::post('/user/passwordChange/{id}', 'UserController@ChangePassword')->name('ChangePassword');
     Route::resource('/user', 'UserController');
     Route::get('/live_search', 'LiveSearch@index')->name('live_search.index');
     Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');

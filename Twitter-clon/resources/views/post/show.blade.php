@@ -36,15 +36,18 @@
                 <img src=" {{Storage::url($post->image)}}" alt="GIF" class="post__image">
                 @endif
             </div>
-            @include('posts.post__footer', compact('post'))
+            @include('post.post__footer', compact('post'))
         </div>
     </div>
     <div class="post__comment">
         <form method="POST" enctype="multipart/form-data" action="{{route('comment.store')}}" id="comment__form">
             @csrf
             <div class="form-group">
+                @error('text')
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
                 <input placeholder="Оставить комментарий" type="text" name="text" id="text" autocomplete="off"
-                    class="form-control">
+                    class="form-control" required>
                 <input type="hidden" name="user_id" id="user_id" value="{{Auth::id()}}">
                 <input type="hidden" name="post_id" id="post_id" value="{{$post->id}}">
                 <input type="hidden" name="action" id="action" value="Add" />
@@ -53,7 +56,7 @@
         </form>
         <div id="form__result"></div>
         {{-- @dd($post->comments) --}}
-        @foreach ($post->comments as $comment)
+        @foreach ($post->comments->reverse() as $comment)
         @include('comment.show', compact('comment'))
         @endforeach
     </div>

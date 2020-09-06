@@ -52,13 +52,23 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/(^[A-Za-z0-9]+$)+/'],
+            'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'date_of_birth' => ['required', 'date', 'max:11'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
+    public function messages()
+    {
+        return [
+            'required' => 'Поле :attribute обязательно для ввода',
+            'numeric|min' => 'Поле :attribute должно иметь не меньше :min',
+            'min' => 'Поле :attribute должно иметь минимум :min символов',
+            'max' => 'Поле :attribute должно иметь максимум :max символов',
+            'unique' => 'Название уже изпользуюьтся',
+        ];
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -67,7 +77,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $data['username'] = '@' . $data['username'];
         $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],

@@ -63,10 +63,9 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span>
-                        Регистрация</a>
-                </li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Войти</a>
+                @auth
+                <li><a href="{{route('get-logout')}}"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
+                @endauth
                 </li>
             </ul>
         </div>

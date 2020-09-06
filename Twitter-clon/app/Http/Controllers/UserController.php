@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -78,18 +79,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // $user_id = Auth::user()->id;
-        // $user = User::where('id', $user_id)->first();
-
-        $params = $request->all();
-        unset($params['image']);
-        if ($request->has('image')) {
-            Storage::delete($user->image);
-            $path = $request->file('image')->store('categories');
-            $params['image'] = $path;
+        if ($user->id == Auth::user()->id) {
+            $params = $request->all();
+            unset($params['image']);
+            if ($request->has('image')) {
+                Storage::delete($user->image);
+                $path = $request->file('image')->store('categories');
+                $params['image'] = $path;
+            }
+            $user->update($params);
+            return redirect()->route('index');
         }
-        $user->update($params);
-        return redirect()->route('index');
+        return redirect()->back();
     }
 
     /**
@@ -105,5 +106,33 @@ class UserController extends Controller
             return redirect()->route('login');
         } else
             return back();
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function PasswordChangeForm(User $user)
+    {
+        $user = Auth::user();
+        return view('user/passwordChange', compact('user'));
+    }
+    public function ChangePassword(Request $request)
+    {
+        if (!Hash::check($request->get('current_password'), Auth::user()->password)) {
+            return back()->with("error", "Ошибка неверный пароль");
+        } else {
+            $request['new_password'] = Hash::make($request->new_password);
+            if (Hash::check($request['confirm_new_password'], $request['new_password'])) {
+                $user = User::find(Auth::id());
+                $user->password = $request['new_password'];
+                $user->save();
+                Auth::logout();
+                return redirect()->route('login');
+            } else {
+                return back()->with("error", "Ошибка пароли не совподают");
+            }
+        }
     }
 }
