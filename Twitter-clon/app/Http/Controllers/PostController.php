@@ -40,6 +40,8 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $params = $request->all();
+        // return json_encode($params);
+
         if ($request->has('image')) {
             $path = $request->file('image')->store('posts');
             $params['image'] = $path;

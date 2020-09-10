@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">
-                                Имя пользователья @</label>
+                                Имя пользователья </label>
                             {{-- {{ __('Name') }} --}}
                             <div class="col-md-6">
                                 <input id="username" type="text"

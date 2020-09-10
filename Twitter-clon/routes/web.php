@@ -30,6 +30,8 @@ Route::get('/', 'MainController@index')->name('index')->middleware('auth');
 Route::middleware(['auth'])->group(function () {
     Route::resource('/post', 'PostController');
     Route::resource('/comment', 'CommentController');
+    // Route::post('/like', 'LikeController@postLike')->name('likepost');
+    Route::resource('/like', 'LikeController');
     Route::get('/user/passwordChangeForm/{id}', 'UserController@PasswordChangeForm')->name('PasswordChangeForm');
     Route::post('/user/passwordChange/{id}', 'UserController@ChangePassword')->name('ChangePassword');
     Route::resource('/user', 'UserController');

@@ -11,7 +11,6 @@
             <div class="alert alert-danger">{{$message}}</div>
             @enderror
             <div class="tweetBox__input">
-
                 <img src="{{Storage::url($user->image)}}" class="image__rounded">
                 <input placeholder="Что нового?" type="text" name="text" id="text" autocomplete="off" required>
                 <input type="hidden" name="user_id" id="user_id" value="{{$user->id}}">

@@ -18,9 +18,6 @@ class CreatePostsTable extends Migration
             $table->string('user_id');
             $table->string('image')->nullable();
             $table->string('text')->nullable();
-            $table->integer('likes')->default(0);
-            $table->integer('dislikes')->default(0);
-            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

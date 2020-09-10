@@ -50,7 +50,7 @@ class LiveSearch extends Controller
                 <div class="col-sm-12">Пользователь не найден</div>';
             }
             $data = array(
-                'table_data' => $output,
+                'user_data' => $output,
                 'total_data' => $total_row,
             );
             echo json_encode($data);

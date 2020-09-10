@@ -25,4 +25,8 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment')->where('id', $this->id)->count();
     }
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 }

@@ -44,4 +44,8 @@ class User extends Authenticatable
         dd($password);
         $this->attributes['new_password'] = Hash::make($password);
     }
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 }
