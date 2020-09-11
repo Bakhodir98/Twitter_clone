@@ -1,4 +1,4 @@
-{{-- @dd($post) --}}
+{{-- @dd($likes->where('post_id', $post->id)) --}}
 <div class="post">
     <div class="post__body">
         <div class="post__header">
@@ -7,7 +7,7 @@
                     <img src="{{Storage::url($post->user->image)}}" class="image__rounded">
                     <span class="post__firstname">{{$post->user->firstname}}</span>
                     <span class="glyphicon glyphicon-ok"></span>
-                    <a href="{{route('user.show', $post->user)}}"><span
+                    <a href="{{route('user.show', $post->user )}}"><span
                             class="post__badge">{{$post->user->username}}</span></a>
                     {{$post->publish_date}}
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where('user_id', $user->id)->get();
-        return view('profile', compact('user', 'posts'));
+        $likes = Like::get();
+        return view('profile', compact('user', 'posts', 'likes'));
     }
 
     /**
@@ -50,10 +52,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, Like $likes)
     {
         $posts = Post::where('user_id', $user->id)->get();
-        return view('profile', compact('user', 'posts'));
+        return view('profile', compact('user', 'posts', 'likes'));
     }
 
     /**

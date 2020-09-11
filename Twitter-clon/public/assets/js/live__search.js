@@ -21,10 +21,16 @@ $(document).ready(function () {
         event.preventDefault();
         var isLike = event.target.nextElementSibling != null;
         var postId = event.target.parentNode.dataset['postid'];
-        console.log(isLike);
-        console.log(postId);
-        console.log(userId);
-
+        // console.log(event);
+        // console.log(postId);
+        // console.log(userId);
+        console.log(this.style);
+        if (isLike) {
+            // alert(this.style.backgroundColor);
+        }
+        else {
+            alert(document.this.style.backgroundColor);
+        }
         $.ajax({
             type: 'POST',
             url: urlLike,

@@ -25,7 +25,6 @@
             <button class="tweetBox_tweetButton">Твитнуть</button>
         </form>
     </div>
-    {{-- @dd($posts) --}}
     @foreach ($posts as $post)
     @include('post', compact('post'))
     @endforeach

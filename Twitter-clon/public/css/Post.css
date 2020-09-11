@@ -177,3 +177,18 @@
   .post__firstname{
       font-weight: 800;
   }
+  .like{
+    background-color: inherit !important;
+    border: none;
+    padding: 5px;
+  }
+  .post__like{
+    color:  var(--twitter-color) !important;
+    border: none;
+    padding: 5px;
+  }
+  .post__dislike{
+    color:  red !important;
+    border: none;
+    padding: 5px;
+  }
