@@ -25,7 +25,7 @@
             <button class="tweetBox_tweetButton">Твитнуть</button>
         </form>
     </div>
-    @foreach ($posts as $post)
+    @foreach ($posts->reverse() as $post)
     @include('post', compact('post'))
     @endforeach
 </div>
